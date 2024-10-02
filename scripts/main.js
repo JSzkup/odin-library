@@ -21,17 +21,15 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
+}
 
-
-    // TODO place this function in Book prototype
-    this.info = function () {
-        if (this.read) {
-            strRead = 'already read'
-        } else {
-            strRead = 'not read yet'
-        }
-        return `${title} by ${author}, ${pages} pages, ${strRead}`
+Book.prototype.info = function () {
+    if (this.read) {
+        strRead = 'already read';
+    } else {
+        strRead = 'not read yet';
     }
+    return `${this.title} by ${this.author}, ${this.pages} pages, ${strRead}`;
 }
 
 // Take user input and store book into array myLibrary
@@ -56,7 +54,6 @@ function addBookToLibrary() {
 
     // put those books in the array
     myLibrary.push(new Book(title, author, pages, read));
-
 }
 
 function createBookDiv(book, index) {
@@ -110,6 +107,8 @@ function displayBooks() {
         // creates the div and fills it with book info
         const bookDiv = createBookDiv(book, index);
         libraryGrid.appendChild(bookDiv);
+
+        console.log(book.info());
 
         // Add event listener to the checkbox
         const checkbox = bookDiv.querySelector(`#bookRead-${index}`);
