@@ -1,3 +1,4 @@
+// TODO add example book to myLibrary or remove it entirely
 const myLibrary = [];
 
 // Get the dialog element
@@ -63,6 +64,11 @@ function createBookDiv(book, index) {
     bookDiv.className = 'book';
     bookDiv.id = `book-${index}`;
 
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.className = 'delete-btn';
+    bookDiv.appendChild(deleteBtn);
+
     const titleP = document.createElement('p');
     titleP.textContent = book.title;
     bookDiv.appendChild(titleP);
@@ -109,6 +115,12 @@ function displayBooks() {
         const checkbox = bookDiv.querySelector(`#bookRead-${index}`);
         checkbox.addEventListener('change', (i) => {
             book.read = i.target.checked;
+        });
+
+        const deleteBtn = bookDiv.querySelector('.delete-btn');
+        deleteBtn.addEventListener('click', () => {
+            myLibrary.splice(index, 1);
+            displayBooks();
         });
     });
 }
