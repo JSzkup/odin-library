@@ -12,6 +12,7 @@ const submitForm = document.getElementById('submitBtn');
 
 // container for books
 const libraryGrid = document.getElementById("LibraryGrid")
+const book = document.getElementsByClassName("book")
 
 
 function Book(title, author, pages, read) {
@@ -57,39 +58,57 @@ function addBookToLibrary() {
 
 }
 
-// loops through array and displays each book
+function createBookDiv(book, index) {
+    const bookDiv = document.createElement('div');
+    bookDiv.className = 'book';
+    bookDiv.id = `book-${index}`;
+
+    const titleP = document.createElement('p');
+    titleP.textContent = book.title;
+    bookDiv.appendChild(titleP);
+
+    const authorP = document.createElement('p');
+    authorP.textContent = `By ${book.author}`;
+    bookDiv.appendChild(authorP);
+
+    const pagesP = document.createElement('p');
+    pagesP.textContent = `${book.pages} Pages`;
+    bookDiv.appendChild(pagesP);
+
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.id = `bookRead-${index}`;
+    checkbox.name = `bookRead-${index}`;
+    checkbox.value = '0';
+    checkbox.checked = book.read;
+    bookDiv.appendChild(checkbox);
+
+    const label = document.createElement('label');
+    label.htmlFor = `bookRead-${index}`;
+    label.textContent = 'Read?';
+    bookDiv.appendChild(label);
+
+    return bookDiv;
+}
+
 function displayBooks() {
     // Select the library grid element
     const libraryGrid = document.getElementById('library-grid');
 
-    // Clear the existing books in the library grid
-    libraryGrid.innerHTML = '';
+    // TODO might remove button as well and re-add here so it always stays at the end of the grid
+    // Clear the existing books in the library grid incl example book
+    libraryGrid.querySelectorAll('.book').forEach(el => el.remove());
 
     // Loop through each book in the myLibrary array
     myLibrary.forEach((book, index) => {
-        // Create a new div for the book
-        const bookDiv = document.createElement('div');
-        bookDiv.className = 'book';
-        bookDiv.id = `book-${index}`;
-
-
-        // TODO recreate with proper js
-        // Add book details
-        bookDiv.innerHTML = `
-            <p>${book.title}</p>
-            <p>By ${book.author}</p>
-            <p>${book.pages} Pages</p>
-            <input type="checkbox" id="bookRead-${index}" name="bookRead-${index}" ${book.read ? 'checked' : ''}>
-            <label for="bookRead-${index}">Read?</label><br>
-        `;
-
-        // Add the book div to the library grid
+        // creates the div and fills it with book info
+        const bookDiv = createBookDiv(book, index);
         libraryGrid.appendChild(bookDiv);
 
         // Add event listener to the checkbox
         const checkbox = bookDiv.querySelector(`#bookRead-${index}`);
-        checkbox.addEventListener('change', (e) => {
-            book.read = e.target.checked;
+        checkbox.addEventListener('change', (i) => {
+            book.read = i.target.checked;
         });
     });
 }
