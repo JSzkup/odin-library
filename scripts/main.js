@@ -23,6 +23,7 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
+// returns all the information in the book object
 Book.prototype.info = function () {
     if (this.read) {
         strRead = 'already read';
@@ -56,6 +57,7 @@ function addBookToLibrary() {
     myLibrary.push(new Book(title, author, pages, read));
 }
 
+// creates and populates a div for a new book
 function createBookDiv(book, index) {
     const bookDiv = document.createElement('div');
     bookDiv.className = 'book';
@@ -135,3 +137,12 @@ submitForm.addEventListener('click', () => {
     addBookToLibrary();
     displayBooks();
 });
+
+function exampleBook() {
+    myLibrary.push(new Book('The Lord of the Rings', 'J.R.R. Tolkien', 432, true));
+    displayBooks();
+}
+
+window.onload = function () {
+    exampleBook();
+};
