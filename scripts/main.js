@@ -1,4 +1,3 @@
-// TODO add example book to myLibrary or remove it entirely
 const myLibrary = [];
 
 // Get the dialog element
@@ -100,9 +99,8 @@ function displayBooks() {
     // Select the library grid element
     const libraryGrid = document.getElementById('library-grid');
 
-    // TODO might remove button as well and re-add here so it always stays at the end of the grid
-    // Clear the existing books in the library grid incl example book
-    libraryGrid.querySelectorAll('.book').forEach(el => el.remove());
+    // clears everything in the div to be readded so no duplicates
+    libraryGrid.innerHTML = "";
 
     // Loop through each book in the myLibrary array
     myLibrary.forEach((book, index) => {
@@ -124,13 +122,22 @@ function displayBooks() {
             displayBooks();
         });
     });
+
+    addBookButton(libraryGrid);
 }
 
+function addBookButton(libraryGrid) {
+    const openDialogBtn = document.createElement('button');
+    openDialogBtn.textContent = 'New Book';
+    openDialogBtn.id = 'openDialog';
 
-// Add an event listener to the button to open the dialog
-openDialogBtn.addEventListener('click', () => {
-    dialog.showModal();
-});
+    libraryGrid.appendChild(openDialogBtn);
+
+    // Add an event listener to the button to open the dialog
+    openDialogBtn.addEventListener('click', () => {
+        dialog.showModal();
+    });
+}
 
 // adds a new book to the library once submitted
 submitForm.addEventListener('click', () => {
@@ -138,11 +145,13 @@ submitForm.addEventListener('click', () => {
     displayBooks();
 });
 
+//creates an example book to display on the screen
 function exampleBook() {
     myLibrary.push(new Book('The Lord of the Rings', 'J.R.R. Tolkien', 432, true));
     displayBooks();
 }
 
+// on page load, create example book
 window.onload = function () {
     exampleBook();
 };
