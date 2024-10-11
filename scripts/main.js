@@ -147,10 +147,12 @@ submitForm.addEventListener('click', () => {
     displayBooks();
 });
 
-// adds functionality to form X button
+// closes the dialog and resets the form
 closeDialogBtn.addEventListener('click', () => {
+    form.reset();
     dialog.close();
 });
+
 
 //creates an example book to display on the screen
 function exampleBook() {
