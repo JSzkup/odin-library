@@ -66,7 +66,7 @@ function createBookDiv(book, index) {
 
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = 'Delete';
-    deleteBtn.className = 'delete-btn';
+    deleteBtn.className = 'deleteBtn';
     bookDiv.appendChild(deleteBtn);
 
     const titleP = document.createElement('p');
@@ -118,7 +118,7 @@ function displayBooks() {
             book.read = i.target.checked;
         });
 
-        const deleteBtn = bookDiv.querySelector('.delete-btn');
+        const deleteBtn = bookDiv.querySelector('.deleteBtn');
         deleteBtn.addEventListener('click', () => {
             myLibrary.splice(index, 1);
             displayBooks();
