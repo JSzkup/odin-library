@@ -7,6 +7,8 @@ const openDialogBtn = document.getElementById('openDialog');
 
 // form element
 const form = document.getElementById('bookForm');
+// close dialog button X
+const closeDialogBtn = document.getElementById("close-button")
 // submit button within form
 const submitForm = document.getElementById('submitBtn');
 
@@ -143,6 +145,11 @@ function addBookButton(libraryGrid) {
 submitForm.addEventListener('click', () => {
     addBookToLibrary();
     displayBooks();
+});
+
+// adds functionality to form X button
+closeDialogBtn.addEventListener('click', () => {
+    dialog.close();
 });
 
 //creates an example book to display on the screen
