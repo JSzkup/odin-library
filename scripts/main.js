@@ -65,7 +65,7 @@ function createBookDiv(book, index) {
     bookDiv.id = `book-${index}`;
 
     const deleteBtn = document.createElement('button');
-    deleteBtn.textContent = 'Delete';
+    deleteBtn.textContent = '╳';
     deleteBtn.className = 'deleteBtn';
     bookDiv.appendChild(deleteBtn);
 
@@ -130,7 +130,7 @@ function displayBooks() {
 
 function addBookButton(libraryGrid) {
     const openDialogBtn = document.createElement('button');
-    openDialogBtn.textContent = 'New Book';
+    openDialogBtn.textContent = '＋';
     openDialogBtn.id = 'openDialog';
 
     libraryGrid.appendChild(openDialogBtn);
