@@ -74,6 +74,8 @@
     grid-row: 4;
 
     justify-self: end;
+
+    user-select: none;
 }
 
 .book input {
@@ -91,18 +93,23 @@
 }
 
 #openDialog {
+    border: 2px solid black;
     border-radius: 500PX;
     margin: 10px;
 
-    height: 120px;
-    width: 120px;
+    height: 100px;
+    width: 100px;
 
-    background-color: lightslategrey;
+    font-size: 40px;
+
+    background-color: rgb(199, 208, 217);
     color: black;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
 
 #openDialog:hover {
-    background-color: green;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
 }
