@@ -8,6 +8,13 @@
     align-items: center;
 }
 
+#bookDialog {
+    border-radius: 20px;
+    border: 2px solid black;
+
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 #bookForm {
     display: flex;
     flex-direction: column;
@@ -17,8 +24,6 @@
     height: 420px;
 
     padding: 10px;
-
-    /* TODO round corners */
 }
 
 #bookForm #close-button {
@@ -36,7 +41,10 @@
 
     width: 250px;
 
-    border: solid black 5px;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr .5fr;
+    border: solid black 2px;
     border-radius: 20px;
 
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -45,14 +53,42 @@
 
 }
 
+.book button {
+    width: 30px;
+    height: 30px;
+
+    justify-self: center;
+    align-self: center;
+}
+
+.book p {
+    grid-column: 2;
+}
+
+.book label {
+    grid-column: 2;
+    grid-row: 4;
+
+    justify-self: end;
+}
+
+.book input {
+    grid-column: 3;
+    grid-row: 4;
+
+    justify-self: center;
+    align-self: start;
+}
+
+
 .deleteBtn {
-    background-color: red;
+    background-color: lightgray;
+    border: 1px solid black;
 }
 
 #openDialog {
     border-radius: 500PX;
     margin: 10px;
-    ;
 
     height: 120px;
     width: 120px;
