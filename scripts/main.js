@@ -17,21 +17,28 @@ const libraryGrid = document.getElementById("LibraryGrid")
 const book = document.getElementsByClassName("book")
 
 
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-}
+class Book {
 
-// returns all the information in the book object
-Book.prototype.info = function () {
-    if (this.read) {
-        strRead = 'already read';
-    } else {
-        strRead = 'not read yet';
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.pages = pages;
+        this.read = read;
+        this.author = author;
     }
-    return `${this.title} by ${this.author}, ${this.pages} pages, ${strRead}`;
+
+
+    // returns all the information in the book object
+    get info() {
+        let strRead;
+
+        if (this.read) {
+            strRead = 'already read';
+        } else {
+            strRead = 'not read yet';
+        }
+        return `${this.title} by ${this.author}, ${this.pages} pages, ${strRead}`;
+    }
+
 }
 
 // Take user input and store book into array myLibrary
