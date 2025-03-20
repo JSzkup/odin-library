@@ -13,7 +13,7 @@ const closeDialogBtn = document.getElementById("close-button")
 const submitForm = document.getElementById('submitBtn');
 
 // container for books
-const libraryGrid = document.getElementById("LibraryGrid")
+const libraryGrid = document.getElementById("library-grid")
 const book = document.getElementsByClassName("book")
 
 
@@ -117,7 +117,7 @@ function displayBooks() {
         const bookDiv = createBookDiv(book, index);
         libraryGrid.appendChild(bookDiv);
 
-        console.log(book.info());
+        console.log(book.info);
 
         // Add event listener to the checkbox
         const checkbox = bookDiv.querySelector(`#bookRead-${index}`);
