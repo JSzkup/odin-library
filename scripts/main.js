@@ -148,8 +148,27 @@ function addBookButton(libraryGrid) {
     });
 }
 
+function formValidation() {
+// Checks that none of the forms fields are empty
+    const title = document.getElementById('title');
+    const author = document.getElementById('author');
+    const pages = document.getElementById('pages');
+
+    if (!title.checkValidity()) {
+        document.getElementById('title-error').innerHTML = inpObj.validationMessage;
+  }
+    if (!author.checkValidity()) {
+        document.getElementById('author-error').innerHTML = inpObj.validationMessage;
+  }
+    if (!pages.checkValidity()) {
+        document.getElementById('pages-error').innerHTML = inpObj.validationMessage;
+  }
+
+}
+
 // adds a new book to the library once submitted
 submitForm.addEventListener('click', () => {
+    formValidation();
     addBookToLibrary();
     displayBooks();
 });
